@@ -10,23 +10,32 @@ namespace program3
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("The prime numbers between 2 and 100:");
-            for(int i = 2; i <= 100; i++)
+            int[] a = new int[99];
+            for (int k = 0; k < 99; k++)
             {
-                int n = 0;
-                for(int j = 2; j <= i; j++)
+                a[k] = k + 2;
+            }//给数组赋值2——100
+
+            for (int i = 2; i <= 100; i++)
+            {
+                for (int j = 0; j < 99; j++)
                 {
-                    if (i % j == 0)
+                    if (a[j] != 0)
                     {
-                        break;
+                        if (a[j] % i == 0 && a[j] / i != 1)
+                        { a[j] = 0; }
                     }
-                    n++;
                 }
-                if (n == i - 2 && i != 2)
+            }//筛选出素数，数组素数为本身，非素数为0
+
+            Console.WriteLine("输出2——100之间的所有素数：");
+            for (int ii = 0; ii < 99; ii++)
+            {
+                if (a[ii] != 0)
                 {
-                    Console.Write(i + " ");
+                    Console.Write(a[ii] + " ");
                 }
-            }
+            }//输出素数
         }
     }
 }
